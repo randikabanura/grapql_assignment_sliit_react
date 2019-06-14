@@ -33,7 +33,8 @@ module.exports = buildSchema(`
                 key: String!
                 description: String
                 assignments: [Assignment!]
-                lectures: [User!]
+                lectures: [Lecturer!]
+                enrolledStudents: [Student!]!
                 course: Course!
             }
 
@@ -119,6 +120,7 @@ module.exports = buildSchema(`
                 createSubject(subjectInput: SubjectInput): Subject!
                 createAssignment(assignmentInput: AssignmentInput): Assignment!
                 markForStudent(markInput: MarkInput): Mark!
+                enrollForSubject(subjectId: String!): Student!
             }
 
             schema{
