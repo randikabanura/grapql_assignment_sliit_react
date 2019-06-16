@@ -121,6 +121,7 @@ module.exports = buildSchema(`
                 createAssignment(assignmentInput: AssignmentInput): Assignment!
                 markForStudent(markInput: MarkInput): Mark!
                 enrollForSubject(subjectId: String!): Student!
+                assignLecturer(subjectId: String!, lecturerId: String!): Lecturer!
             }
 
             schema{
