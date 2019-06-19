@@ -8,6 +8,13 @@ module.exports = buildSchema(`
                 userRole: String!
             }
 
+            type Accept {
+                _id: ID!
+                lecturerId : Lecturer!
+                subjectId : Subject!
+                accepted : Boolean!
+            }
+
             type Student {
                 _id: ID!
                 name: String!
@@ -111,6 +118,7 @@ module.exports = buildSchema(`
                 subjects(courseId: String!): [Subject!]!
                 students(subjectId: String!): [Student!]!
                 assignments(subjectId: String!): [Assignment!]!
+                accepts: [Accept!]!
                 enrolledSubjects: Student!
                 lecturerSubjects: Lecturer!
             }
@@ -122,7 +130,8 @@ module.exports = buildSchema(`
                 createAssignment(assignmentInput: AssignmentInput): Assignment!
                 markForStudent(markInput: MarkInput): Mark!
                 enrollForSubject(subjectId: String!): Student!
-                assignLecturer(subjectId: String!, lecturerId: String!): Lecturer!
+                assignLecturer(subjectId: String!, lecturerId: String!): Accept!
+                lecturerAccepted(acceptId: String!): Lecturer!
             }
 
             schema{

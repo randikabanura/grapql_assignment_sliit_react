@@ -107,6 +107,16 @@ const singleStudent = studentId => {
         })
 }
 
+const singleLecturer = lecturerId => {
+    return Lecturer.findById(lecturerId)
+        .then(lecturer=> {
+            return {...lecturer._doc, userId: user.bind(this, lecturer._doc.userId) }
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
 exports.subjects = subjects
 exports.course = course
 exports.singleSubject = singleSubject
@@ -115,3 +125,4 @@ exports.user = user
 exports.singleAssignment = singleAssignment
 exports.details = details
 exports.singleStudent = singleStudent
+exports.singleLecturer = singleLecturer
